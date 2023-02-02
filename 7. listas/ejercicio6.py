@@ -16,8 +16,11 @@ def main():
     filename = input('Ingresar nombre de archivo: ')
     try:
         with open(filename) as file:
-            words = file.read().split()
-            unique_words = list(set(words))
+            unique_words = []
+            for line in file:
+                for word in line.split():
+                    if word not in unique_words:
+                        unique_words.append(word)
             print(sorted(unique_words))
     except:
         print(f'No se puede abrir el archivo: {filename}')
