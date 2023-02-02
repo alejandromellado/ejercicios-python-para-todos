@@ -16,12 +16,12 @@ def main():
         with open(filename) as file:
             relevant_lines = [line for line in file if 'From ' in line]
 
-            email_counter = {}
+            counter = {}
             for line in relevant_lines:
-                email = line.split()[1]
-                email_counter[email] = 1 if (email not in email_counter) else (email_counter[email] + 1)
+                sender = line.split()[1]
+                counter[sender] = 1 if (sender not in counter) else (counter[sender] + 1)
 
-            print(email_counter)
+            print(counter)
 
     except Exception as e:
         print(e)
